@@ -19,6 +19,13 @@ Inventory.init (
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        stock_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        }
     },
     {
         sequelize,
