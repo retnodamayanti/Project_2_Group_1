@@ -21,17 +21,15 @@ Inventory.init (
         },
         stock_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
+            allowNull: false,
+            
         }
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Inventory'
+        modelName: 'inventory'
 
     }
 )
