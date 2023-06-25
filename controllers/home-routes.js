@@ -3,8 +3,7 @@ const { Inventory, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-//router.get('/', withAuth, async (req, res) => {
-  router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const inventoryData = await Inventory.findAll({
       order: [['product_name', 'ASC']],
