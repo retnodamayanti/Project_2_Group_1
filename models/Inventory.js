@@ -21,8 +21,11 @@ Inventory.init (
         },
         stock_id: {
             type: DataTypes.INTEGER,
+            allowNull: false,            
+        },
+        description: {
+            type: DataTypes.TEXT,
             allowNull: false,
-            
         }
     },
     {
