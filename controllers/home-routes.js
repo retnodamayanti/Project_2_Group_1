@@ -31,6 +31,7 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
 // GET one product
 router.get('/product/:id', async (req, res) => {
   try {
@@ -41,7 +42,6 @@ router.get('/product/:id', async (req, res) => {
       return;
     }
 
-    // Render the product details page with the retrieved product data
     res.render('product', {
       product: product.get({ plain: true }),
       logged_in: req.session.logged_in,
@@ -52,4 +52,3 @@ router.get('/product/:id', async (req, res) => {
 });
 
 module.exports = router;
-
