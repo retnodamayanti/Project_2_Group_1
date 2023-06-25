@@ -1,5 +1,37 @@
 <section>
     {{!-- To Be Confirmed --}}
-    <button>Update Quantity</button>
-    <button>Delete product</button>
+    <div  >
+        <p class="btnContainer">
+            <button class="counter minus" onclick="totalClick(-1)">-</button>
+            <span id="totalClicks">0</span>
+            <button  class="counter add" onclick="totalClick(1)">+</button>
+        </p>
+        <button class="counter minus" onclick="totalClick(0)">Reset</button>
+        <button class="counter minus" >Submit</button>
+         <button class="counter minus">Update Quantity</button>
+        <button class="counter minus">Delete product</button>
+    </div>
+
+   
+    <script>
+        function totalClick(click) {
+            const totalClicks = document.getElementById('totalClicks');
+            const sumValue = parseInt(totalClicks.innerText) + click;
+
+            totalClicks.innerText = sumValue
+            //avoid negatives 
+
+            if (sumValue < 0) {
+                totalClicks.innerText = 0;
+            }
+
+            //reset button
+
+            if (click === 0){
+                totalClicks.innerText = 0;
+            }
+
+        }
+    </script>
+
 </section>
