@@ -32,4 +32,23 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// GET one product
+router.get('/product/:id', async (req, res) => {
+  try {
+    const product = await Inventory.findByPk(req.params.id);
+
+    if (!product) {
+      res.status(404).json({ message: 'Product not found' });
+      return;
+    }
+
+    res.render('product', {
+      product: product.get({ plain: true }),
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
