@@ -85,11 +85,13 @@
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - User Information -->
+                        {{#if logged_in}}
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Welcome, {{username}}</span>                                
                             </a>
                         </li>
+                        {{/if}}
 
                     </ul>
 
@@ -180,25 +182,8 @@
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
     {{/if}}
+    <script src="/js/accessInventory.js"></script>
 
-{{!-- </body>
-<body>
-  <header>
-    <h1>Company Inventory</h1>
-  </header>
-  <nav>
-    <a href="/">Home</a>
-    {{#if logged_in}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-  </nav>
-  hat is 
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-  <script src="/js/accessInventory.js"></script>
 </body>
 
 </html>
