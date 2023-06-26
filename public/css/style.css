@@ -9,7 +9,7 @@
   --border-radius: 0.3rem;
 }
 
-
+/* start css for button */
 .counter {
   background-color: var(--tertiary);
   border: none;
@@ -52,6 +52,8 @@
   position: relative;
   left: 126px;
 }
+/* end css for button */
+
 body {
   font-family: Arial;
   margin: 0;
