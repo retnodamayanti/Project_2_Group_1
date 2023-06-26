@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { Inventory, User } = require('../models');
 const withAuth = require('../utils/auth');
-
+const path = require('path');
+const fs = require('fs');
 
 router.get('/', withAuth, async (req, res) => {
   try {
@@ -11,11 +12,15 @@ router.get('/', withAuth, async (req, res) => {
 
     const inventories= inventoryData.map((product) => product.get({ plain: true }));
 
-    console.log(inventories)
+    // Read the user data from the JSON file
+    const filePath = path.join(__dirname, '../seeds/userData.json');
+    const userData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const username = userData[0].username;
 
     res.render('homepage', {
       inventories,
       logged_in: req.session.logged_in,
+      username: username
     });
   } catch (err) {
     res.status(500).json(err);
@@ -51,9 +56,15 @@ router.get('/product/:id', async (req, res) => {
       return;
     }
 
+    // Read the user data from the JSON file
+    const filePath = path.join(__dirname, '../seeds/userData.json');
+    const userData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const username = userData[0].username;
+
     res.render('product', {
       product: product.get({ plain: true }),
       logged_in: req.session.logged_in,
+      username: username,
     });
   } catch (err) {
     res.status(500).json(err);
