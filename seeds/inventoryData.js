@@ -14,16 +14,16 @@ const inventoryData = [
         description: "Birch is a native hardwood that comes from the genus Betula. There are over a dozen species of birch trees native to North America, but the most common are white birch, yellow birch, and black birch. Yellow birch and white birch are the two most commonly found in woodworking.",
     },
     {
-        product_name: "Wheelbarrows",
-        quantity: 10,
+        product_name: "Bricks",
+        quantity: 100,
         stock_id: 3,
-        description: "This product is designed for carrying loose bricks, rocks and concrete, soil or plants around your yard with the utmost durability and convenience",
+        description: "construction material used to build walls, pavements and other elements in masonry construction. ",
     },
     {
-        product_name: "Axe",
+        product_name: "Steel Beams",
         quantity: 40,
         stock_id: 4,
-        description: "This product is perfect for chopping up firewood or felling a tree. The axe features a durable carbon steel head and light weight, but strong fibreglass handle.",
+        description: "Steel beams are structural components that are commonly used in construction to provide support and stability to buildings and other structures. They are made of steel, which is known for its strength and load-bearing capacity.",
     }
 ]
 
