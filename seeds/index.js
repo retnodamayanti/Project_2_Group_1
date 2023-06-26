@@ -1,5 +1,6 @@
 const sequelize = require('../config/connection');
-const seedInventory = require('./inventoryData');
+const seedInventory = require('./inventoryData' );
+const seedTools = require('./toolsData')
 
 const userData = require('./userData.json')
 const { User } = require('../models')
@@ -13,6 +14,8 @@ const seedAll = async () => {
   });
   
   await seedInventory();
+
+  await seedTools();
 
   console.log('Databased seeded')
 
