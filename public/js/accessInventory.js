@@ -27,15 +27,36 @@ document.getElementById('reset').onclick = function () {
 }
 
 const addBtn = document.getElementById('addStock')
+const reduceBtn = document.getElementById('reduceStock')
 
-// const addStock = async () => {
-//     console.log(count)
+const addStock = async (event) => {
+   var stockId = event.target.dataset.value
 
-//     const response = await fetch('/api/inventory', {
-//         method: 'PUT',
-//         body: 
-//     })
+    const response = await fetch(`/api/inventory/${stockId}`, {
+        method: 'POST',
+        body: JSON.stringify({ increment: count }),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    if (response.ok){
+        document.location.reload()
+    }
+}
+
+const reduceStock = async (event) => {
+    console.log(count)
     
-// }
+    var stockId = event.target.dataset.value
+    
+    const response = await fetch(`/api/inventory/${stockId}`, {
+        method: 'POST',
+        body: JSON.stringify({ decrement: count }),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    if (response.ok){
+        document.location.reload()
+    }
+}
+
+reduceBtn.addEventListener('click', reduceStock)
 
 addBtn.addEventListener('click', addStock)

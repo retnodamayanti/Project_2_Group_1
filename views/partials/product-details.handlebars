@@ -1,6 +1,7 @@
 <section>
     {{!-- To Be Confirmed --}}
     <div  >
+       
         <p class="btnContainer">
             <button class="counter minus"  {{! onclick="totalClick(-1) " }} >-</button>
             <span id="totalClicks">0</span>
@@ -8,8 +9,8 @@
         </p>
         <button class="counter minus" id="reset">Reset</button>
         {{!-- <button class="counter minus" >Submit</button> --}}
-         <button id="addStock" class="counter minus">Add Stock</button>
-        <button class="counter minus">Reduce Stock</button>
+         <button id="addStock" class="counter minus" data-value="{{product.id}}">Add Stock</button>
+        <button id="reduceStock" class="counter minus" data-value="{{product.id}}">Reduce Stock</button>
     </div>
 
     
