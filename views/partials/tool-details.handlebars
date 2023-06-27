@@ -5,9 +5,10 @@
       <h6 class="m-0 font-weight-bold text-primary">{{tool.product_name}}</h6>
     </div>
     <!-- Card Body -->
-    <div class="card-body">
-      <p class="h5 mb-0 font-weight-bold text-gray-800">{{tool.description}}</p>
-      <p>Quantity: {{tool.quantity}}</p>  
+    <div class="card-body">      
+      <p>Quantity: {{tool.quantity}}</p>
+      <p>Last updated by: {{tool.stock_id}}</p>
+      {{!-- <img src="/images/{{filename}}" alt="{{description}}">   --}}
     </div>
   </div>
 </div>
