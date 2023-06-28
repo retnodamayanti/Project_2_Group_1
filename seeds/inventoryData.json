@@ -1,0 +1,50 @@
+ [
+    {
+        "product_name": "Oak Timber",
+        "quantity": 50,
+        "stock_id": 1,
+        "filename": "01-Oak Timber.jpg",
+        "description": "Oak wood is a type of hardwood that derives from the oak tree native to the northern hemisphere. There are around 600 species of oak, both deciduous and evergreen.",
+        "category_id": 1
+    },
+    {
+        "product_name": "Birch Timber",
+        "quantity": 30,
+        "stock_id": 2,
+        "filename": "02-Birch Timber.jpg",
+        "description": "Birch is a native hardwood that comes from the genus Betula. There are over a dozen species of birch trees native to North America, but the most common are white birch, yellow birch, and black birch. Yellow birch and white birch are the two most commonly found in woodworking.",
+        "category_id": 1
+    },
+    {
+        "product_name": "Engeering Brick",
+        "quantity": 100,
+        "stock_id": 3,
+        "filename": "03-Engneering Brick.jpg",
+        "description": "Engineering bricks are a type of brick used where strength, low water porosity or acid (flue gas) resistance are needed.",
+        "category_id": 2
+    },
+    {
+        "product_name": "Concrete Brick",
+        "quantity": 80,
+        "stock_id": 4,
+        "filename": "04-Concrete Brick.jpg",
+        "description": "Concrete brick deaden exterior noise, providing a buffer from traffic noise, airplanes flying overhead and other various disruptions.",
+        "category_id": 2
+    },
+    {
+        "product_name": "H Shape Steel Beam",
+        "quantity": 40,
+        "stock_id": 5,
+        "filename": "05-H Shape Steel Beam.jpg",
+        "description": "H-beams have a thicker, deeper web, which means that they can better support the weight of an object placed on top of them.",
+        "category_id": 3
+    },
+    {
+        "product_name": "L Shape Steel Beam",
+        "quantity": 60,
+        "stock_id": 6,
+        "filename": "06-L Shape Steel Beam.jpg",
+        "description": "L-Section beams are often used in construction applications where strength and stiffness are required, such as in buildings, bridges, and other structures.",
+        "category_id": 3
+    }
+]
