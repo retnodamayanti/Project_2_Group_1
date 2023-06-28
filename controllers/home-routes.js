@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Inventory, User } = require('../models');
+const { Inventory, User, Tools } = require('../models');
 const withAuth = require('../utils/auth');
 const path = require('path');
 const fs = require('fs');
@@ -12,6 +12,12 @@ router.get('/', withAuth, async (req, res) => {
 
     const inventories= inventoryData.map((product) => product.get({ plain: true }));
 
+    const toolsData = await Tools.findAll({
+      order: [['product_name', 'ASC']],
+    });
+
+    const tools = toolsData.map((product) => product.get({ plain: true }));
+
     // Read the user data from the JSON file
     const filePath = path.join(__dirname, '../seeds/userData.json');
     const userData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -19,6 +25,7 @@ router.get('/', withAuth, async (req, res) => {
 
     res.render('homepage', {
       inventories,
+      tools,
       logged_in: req.session.logged_in,
       username: username
     });
