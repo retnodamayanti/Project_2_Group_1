@@ -1,22 +1,15 @@
+const User = require('./User');
+const Category = require('./Category');
 const Inventory = require('./Inventory');
-const User = require('./user');
 const Tools = require('./tools')
 
-User.hasMany(Inventory, {
-    foreignKey: 'user_id'
+Category.hasMany(Inventory, {
+    foreignKey: 'category_id',
 });
 
-Inventory.belongsTo(User, {
-    foreignKey: 'user_id'
-})
-
-User.hasMany(Tools, {
-   foreignKey: 'user_id' 
-})
-
-Tools.belongsTo(User, {
-    foreignKey: 'user_id'
+Inventory.belongsTo(Category, {
+    foreignKey: 'category_id'
 })
 
 
-module.exports = { User, Inventory, Tools };
+module.exports = { User, Inventory, Category, Tools };

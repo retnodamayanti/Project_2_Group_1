@@ -1,39 +1,95 @@
 const router = require('express').Router();
-const { Inventory, User, Tools } = require('../models');
+const { Inventory, User, Category} = require('../models');
 const withAuth = require('../utils/auth');
 const path = require('path');
 const fs = require('fs');
 
+// router.get('/', withAuth, async (req, res) => {
+//   try {
+//     const inventoryData = await Inventory.findAll({
+//       order: [['product_name', 'ASC']],
+//     });
+
+//     const inventories= inventoryData.map((product) => product.get({ plain: true }));
+
+//     // Read the user data from the JSON file
+//     const filePath = path.join(__dirname, '../seeds/userData.json');
+//     const userData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+//     const username = userData[0].username;
+
+//     res.render('homepage', {
+//       inventories,
+//       logged_in: req.session.logged_in,
+//       username: username
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+// GET all categories for homepage
 router.get('/', withAuth, async (req, res) => {
   try {
-    const inventoryData = await Inventory.findAll({
-      order: [['product_name', 'ASC']],
+    const categoryData = await Category.findAll({
+      include: [
+        {
+          model: Inventory,
+          attributes: ['filename'],
+        },
+      ],
     });
 
-    const inventories= inventoryData.map((product) => product.get({ plain: true }));
+    const categories = categoryData.map((category) =>
+      category.get({ plain: true })
+    );
+console.log(categories)
 
-    const toolsData = await Tools.findAll({
-      order: [['product_name', 'ASC']],
-    });
-
-    const tools = toolsData.map((product) => product.get({ plain: true }));
-
-    // Read the user data from the JSON file
     const filePath = path.join(__dirname, '../seeds/userData.json');
     const userData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     const username = userData[0].username;
-
     res.render('homepage', {
-      inventories,
-      tools,
+      categories,
       logged_in: req.session.logged_in,
-      username: username
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
 
+// GET one category
+router.get('/category/:id', async (req, res) => {
+  
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+  } else {
+    
+    try {
+      const categoryData = await Category.findByPk(req.params.id, {
+        include: [
+          {
+            model: Inventory,
+            attributes: [
+              'id',
+              'product_name',
+              'quantity',
+              'filename',
+              'description',
+            ],
+          },
+        ],
+      });
+      const category = categoryData.get({ plain: true });
+      console.log(category)
+      res.render('category', { 
+        category, 
+        logged_in: req.session.logged_in });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+});
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {

@@ -30,7 +30,14 @@ Inventory.init (
         description: {
             type: DataTypes.TEXT,
             allowNull: false,
-        }
+        },
+        category_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'category',
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,
