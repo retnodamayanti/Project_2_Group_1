@@ -1,30 +1,3 @@
-// const express = require('express');
-// const routes = require('./controllers');
-// // import sequelize connection
-
-// const connection = require('./config/connection')
-
-// const app = express();
-// const PORT = process.env.PORT || 3001;
-
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-
-// app.use(routes);
-
-// // sync sequelize models to the database, then turn on the server
-
-// const startServer = async () => {
-// await connection.sync({ force: false });
-
-// app.listen(PORT, () => {
-//   console.log(`App listening on port ${PORT}!`);
-// });
-
-// };
-
-// startServer();
-
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -33,7 +6,6 @@ const routes = require('./controllers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sequelize = require('./config/connection');
-// const helpers = require('./utils/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -58,6 +30,12 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Pass the username to the view engine
+app.use((req, res, next) => {
+  res.locals.username = req.session.username;
+  next();
+});
 
 app.use(routes);
 
