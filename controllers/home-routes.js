@@ -1,31 +1,8 @@
 const router = require('express').Router();
-const { Inventory, User, Category} = require('../models');
+const { Inventory, User, Category } = require('../models');
 const withAuth = require('../utils/auth');
 const path = require('path');
 const fs = require('fs');
-
-// router.get('/', withAuth, async (req, res) => {
-//   try {
-//     const inventoryData = await Inventory.findAll({
-//       order: [['product_name', 'ASC']],
-//     });
-
-//     const inventories= inventoryData.map((product) => product.get({ plain: true }));
-
-//     // Read the user data from the JSON file
-//     const filePath = path.join(__dirname, '../seeds/userData.json');
-//     const userData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-//     const username = userData[0].username;
-
-//     res.render('homepage', {
-//       inventories,
-//       logged_in: req.session.logged_in,
-//       username: username
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 // GET all categories for homepage
 router.get('/', withAuth, async (req, res) => {
@@ -42,14 +19,16 @@ router.get('/', withAuth, async (req, res) => {
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
     );
-console.log(categories)
+    
+    // retrieve the logged-in user's information
+    const userId = req.session.user_id;
+    const user = await User.findByPk(userId);
+    const username = user.username;
 
-    const filePath = path.join(__dirname, '../seeds/userData.json');
-    const userData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    const username = userData[0].username;
     res.render('homepage', {
       categories,
       logged_in: req.session.logged_in,
+      username, 
     });
   } catch (err) {
     console.log(err);
@@ -119,10 +98,10 @@ router.get('/product/:id', async (req, res) => {
       return;
     }
 
-    // Read the user data from the JSON file
-    const filePath = path.join(__dirname, '../seeds/userData.json');
-    const userData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    const username = userData[0].username;
+    // retrieve the logged-in user's information
+    const userId = req.session.user_id;
+    const user = await User.findByPk(userId);
+    const username = user.username;
 
     res.render('product', {
       product: product.get({ plain: true }),
