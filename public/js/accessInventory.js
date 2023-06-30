@@ -60,3 +60,20 @@ const reduceStock = async (event) => {
 reduceBtn.addEventListener('click', reduceStock)
 
 addBtn.addEventListener('click', addStock)
+
+const deleteBtn = document.getElementById('deleteBtn')
+
+const deleteProduct = async () => {
+    const productId = deleteBtn.dataset.value
+    console.log(productId)
+
+    const response = await fetch(`/api/inventory/${productId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    })
+    console.log(response)
+    if (response.ok){
+        document.location.replace('/');
+    }
+}
+deleteBtn.addEventListener('click', deleteProduct)

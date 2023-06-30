@@ -88,6 +88,13 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+// render add new product page
+router.get('/addproduct', (req, res) => {
+
+  res.render('addproduct');
+});
+
+
 // GET one product
 router.get('/product/:id', async (req, res) => {
   try {
