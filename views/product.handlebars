@@ -3,6 +3,7 @@
       <h2>{{product.product_name}}</h2>
       <p>Quantity: {{product.quantity}}</p>
       <p>Description: {{product.description}}</p>
+      <button id="deleteBtn" data-value="{{product.id}}">Delete product</button>
     </div>
   <div>
     {{> product-details product=product}}
