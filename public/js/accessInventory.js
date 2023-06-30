@@ -77,3 +77,25 @@ const deleteProduct = async () => {
     }
 }
 deleteBtn.addEventListener('click', deleteProduct)
+
+
+const animate = () => {
+    anime({
+        targets: '#beep', 
+      
+        scale: 2,
+    
+    })
+    }
+    
+    const animateOff = () => {
+      anime({
+          targets: '#beep', 
+          scale: 1
+        
+      })
+      }
+    
+    beep.addEventListener('mouseover', animate )
+    
+    beep.addEventListener('mouseleave', animateOff)
