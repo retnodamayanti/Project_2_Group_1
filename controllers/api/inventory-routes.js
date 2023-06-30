@@ -60,6 +60,7 @@ router.post('/:id', async (req, res) => {
 
 })
 
+
 // add new product to inventory
 router.post('/', async (req, res) => {
     try {

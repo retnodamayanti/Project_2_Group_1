@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sefinek/random-animals": "^1.0.5",
+    "animejs": "^3.2.1",
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
@@ -20,7 +22,9 @@
     "handlebars": "^4.7.6",
     "image-js": "^0.35.4",
     "image.js": "^0.0.0",
+    "js-image-generator": "^1.0.4",
     "mysql2": "^2.2.5",
+    "random-cat-img": "^1.0.11",
     "sequelize": "^6.3.5"
   }
 }
