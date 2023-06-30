@@ -19,7 +19,8 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  transition-duration: 0.4s;
+  margin-left: 15px;
+  /* transition-duration: 0.4s; */
 }
 
 .add {

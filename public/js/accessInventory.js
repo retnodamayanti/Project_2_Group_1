@@ -26,42 +26,46 @@ document.getElementById('reset').onclick = function () {
     document.getElementById('totalClicks').innerHTML = count;
 }
 
-const addBtn = document.getElementById('addStock')
-const reduceBtn = document.getElementById('reduceStock')
+const deleteBtn = document.getElementById('deleteBtn')
+const addStockBtn = document.getElementById('addStockBtn')
+const reduceStockBtn = document.getElementById('reduceStockBtn')
+const reset = document.getElementById('reset')
 
 const addStock = async (event) => {
-   var stockId = event.target.dataset.value
+    var stockId = event.target.dataset.value
 
     const response = await fetch(`/api/inventory/${stockId}`, {
         method: 'POST',
         body: JSON.stringify({ increment: count }),
         headers: { 'Content-Type': 'application/json' },
     })
-    if (response.ok){
+    if (response.ok) {
         document.location.reload()
     }
 }
 
 const reduceStock = async (event) => {
     console.log(count)
-    
+
     var stockId = event.target.dataset.value
-    
+
     const response = await fetch(`/api/inventory/${stockId}`, {
         method: 'POST',
         body: JSON.stringify({ decrement: count }),
         headers: { 'Content-Type': 'application/json' },
     })
-    if (response.ok){
+    if (response.ok) {
         document.location.reload()
     }
 }
 
-reduceBtn.addEventListener('click', reduceStock)
+reduceStockBtn.addEventListener('click', reduceStock)
 
-addBtn.addEventListener('click', addStock)
+addStockBtn.addEventListener('click', addStock)
 
-const deleteBtn = document.getElementById('deleteBtn')
+
+
+
 
 const deleteProduct = async () => {
     const productId = deleteBtn.dataset.value
@@ -72,7 +76,7 @@ const deleteProduct = async () => {
         headers: { 'Content-Type': 'application/json' },
     })
     console.log(response)
-    if (response.ok){
+    if (response.ok) {
         document.location.replace('/');
     }
 }
@@ -81,21 +85,87 @@ deleteBtn.addEventListener('click', deleteProduct)
 
 const animate = () => {
     anime({
-        targets: '#beep', 
-      
-        scale: 2,
-    
+        targets: '#deleteBtn',
+
+        scale: 1.5,
+
     })
-    }
-    
-    const animateOff = () => {
-      anime({
-          targets: '#beep', 
-          scale: 1
-        
-      })
-      }
-    
-    beep.addEventListener('mouseover', animate )
-    
-    beep.addEventListener('mouseleave', animateOff)
+}
+
+const animateOff = () => {
+    anime({
+        targets: '#deleteBtn',
+        scale: 1
+
+    })
+}
+
+deleteBtn.addEventListener('mouseover', animate)
+
+deleteBtn.addEventListener('mouseleave', animateOff)
+
+const animateAddBtn = () => {
+    anime({
+        targets: '#addStockBtn',
+
+        scale: 1.25,
+
+    })
+}
+
+const animateOffAddBtn = () => {
+    anime({
+        targets: '#addStockBtn',
+        scale: 1
+
+    })
+}
+
+addStockBtn.addEventListener('mouseover', animateAddBtn)
+
+addStockBtn.addEventListener('mouseleave', animateOffAddBtn)
+
+
+const animateReduceBtn = () => {
+    anime({
+        targets: '#reduceStockBtn',
+
+        scale: 1.25,
+
+    })
+}
+
+const animateOffReduceBtn = () => {
+    anime({
+        targets: '#reduceStockBtn',
+        scale: 1
+
+    })
+}
+
+reduceStockBtn.addEventListener('mouseover', animateReduceBtn)
+
+reduceStockBtn.addEventListener('mouseleave', animateOffReduceBtn)
+
+
+const animateResetBtn = () => {
+    anime({
+        targets: '#reset',
+
+        scale: 1.25,
+
+    })
+}
+
+const animateOffResetBtn = () => {
+    anime({
+        targets: '#reset',
+        scale: 1
+
+    })
+}
+
+reset.addEventListener('mouseover', animateResetBtn)
+
+reset.addEventListener('mouseleave', animateOffResetBtn)
+
