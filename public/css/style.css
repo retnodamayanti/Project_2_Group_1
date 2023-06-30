@@ -207,3 +207,8 @@ img {
   align-content: flex-start;
   align-items: center;
 }
+
+
+img {
+  padding-bottom: 15px;
+}
