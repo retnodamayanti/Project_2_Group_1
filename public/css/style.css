@@ -19,7 +19,8 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  transition-duration: 0.4s;
+  margin-left: 15px;
+  /* transition-duration: 0.4s; */
 }
 
 .add {
@@ -48,7 +49,7 @@
 
 .btnContainer{
   border: 2px solid var(--tertiary);
-  width: 42%;
+  width: 48%;
   position: relative;
   left: 126px;
 }
@@ -206,4 +207,9 @@ img {
   flex-flow: column wrap;
   align-content: flex-start;
   align-items: center;
+}
+
+
+img {
+  padding-bottom: 15px;
 }
