@@ -31,6 +31,7 @@ const addStockBtn = document.getElementById('addStockBtn')
 const reduceStockBtn = document.getElementById('reduceStockBtn')
 const reset = document.getElementById('reset')
 
+
 const addStock = async (event) => {
     var stockId = event.target.dataset.value
 
@@ -169,3 +170,48 @@ reset.addEventListener('mouseover', animateResetBtn)
 
 reset.addEventListener('mouseleave', animateOffResetBtn)
 
+
+const increaseBtn = document.getElementById('increaseBtn')
+const decreaseBtn = document.getElementById('decreaseBtn')
+
+const animateIncreaseBtn = () => {
+    anime({
+        targets: '#increaseBtn',
+
+        scale: 1.05,
+
+    })
+}
+
+const animateOffincreaseBtn = () => {
+    anime({
+        targets: '#increaseBtn',
+        scale: 1
+
+    })
+}
+
+increaseBtn.addEventListener('mouseover', animateIncreaseBtn)
+
+increaseBtn.addEventListener('mouseleave', animateOffincreaseBtn)
+
+const animateDecreaseBtn = () => {
+    anime({
+        targets: '#decreaseBtn',
+
+        scale: 1.05,
+
+    })
+}
+
+const animateOffDecreaseBtn = () => {
+    anime({
+        targets: '#decreaseBtn',
+        scale: 1
+
+    })
+}
+
+decreaseBtn.addEventListener('mouseover', animateDecreaseBtn)
+
+decreaseBtn.addEventListener('mouseleave', animateOffDecreaseBtn)
