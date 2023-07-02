@@ -31,12 +31,11 @@ Once the application is up and running, follow these steps to use Project Invent
 
 1. Access the application through your web browser.
 2. Create an account or log in if you already have one.
-![create_acc](./public/images/screenshot/screenshot_1.png)
 3. Click `Add New Product` to input new category and item.
 ![add_category](./public/images/screenshot/screenshot_4.png)
 ![add_category](./public/images/screenshot/screenshot_5.png)
 4. Click on one of the category to view the items and quantity.
-![view_roduct](./public/images/screenshot/screenshot_2.png).
+![view_roduct](./public/images/screenshot/screenshot_2.png)
 5. Click on the item to view the description and modify the stock.
 6. Specify the number using the +/- buttons then click Add Stock or Reduce Stock to modify the quantity.
 ![modify_stock](./public/images/screenshot/screenshot_3.png)
