@@ -19,22 +19,30 @@ router.get('/', withAuth, async (req, res) => {
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
     );
-    
+
     // retrieve the logged-in user's information
     const userId = req.session.user_id;
-    const user = await User.findByPk(userId);
-    const username = user.username;
+    let username = '';
+
+    if (userId) {
+      const user = await User.findByPk(userId);
+      if (user) {
+        username = user.username;
+      }
+    }
 
     res.render('homepage', {
       categories,
       logged_in: req.session.logged_in,
-      username, 
+      username,
     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+
 
 // GET one category
 router.get('/category/:id', async (req, res) => {
@@ -105,10 +113,16 @@ router.get('/product/:id', async (req, res) => {
       return;
     }
 
-    // retrieve the logged-in user's information
-    const userId = req.session.user_id;
+  // retrieve the logged-in user's information
+  const userId = req.session.user_id;
+  let username = '';
+
+  if (userId) {
     const user = await User.findByPk(userId);
-    const username = user.username;
+    if (user) {
+      username = user.username;
+    }
+  }
 
     res.render('product', {
       product: product.get({ plain: true }),
